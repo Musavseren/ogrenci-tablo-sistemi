@@ -1,0 +1,70 @@
+
+const form = document.getElementById("studentForm");
+const nameInput = document.getElementById("studentName");
+const numberInput = document.getElementById("studentNumber");
+const studentList = document.getElementById("studentList");
+const studentCount = document.getElementById("studentCount");
+
+let students = JSON.parse(localStorage.getItem("students") || "[]");
+
+function saveStudents() {
+  localStorage.setItem("students", JSON.stringify(students));
+}
+
+function renderStudents() {
+  studentList.replaceChildren();
+
+  students.forEach((student) => {
+    const row = document.createElement("tr");
+
+    [student.number, student.name].forEach((value) => {
+      const cell = document.createElement("td");
+      cell.textContent = value;
+      row.appendChild(cell);
+    });
+
+    const actionCell = document.createElement("td");
+    const deleteButton = document.createElement("button");
+
+    deleteButton.textContent = "Sil";
+    deleteButton.className = "delete-btn";
+    deleteButton.addEventListener("click", () => {
+      students = students.filter((item) => item.id !== student.id);
+      saveStudents();
+      renderStudents();
+    });
+
+    actionCell.appendChild(deleteButton);
+    row.appendChild(actionCell);
+    studentList.appendChild(row);
+  });
+
+  studentCount.textContent = `Toplam öğrenci: ${students.length}`;
+}
+
+form.addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  const name = nameInput.value.trim();
+  const number = numberInput.value.trim();
+
+  if (!name || !number) return;
+
+  if (students.some((student) => student.number === number)) {
+    alert("Bu öğrenci numarası zaten kayıtlı.");
+    return;
+  }
+
+  students.push({
+    id: crypto.randomUUID(),
+    name,
+    number
+  });
+
+  saveStudents();
+  renderStudents();
+  form.reset();
+  nameInput.focus();
+});
+
+renderStudents();

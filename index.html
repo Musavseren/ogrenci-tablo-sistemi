@@ -1,0 +1,35 @@
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Öğrenci Yönetim Sistemi</title>
+  <link rel="stylesheet" href="main.css">
+  <script src="main.js" defer></script>
+</head>
+<body>
+  <main class="container">
+    <h1>Öğrenci Yönetim Sistemi</h1>
+
+    <form id="studentForm">
+      <input id="studentName" type="text" placeholder="Öğrenci adı" required>
+      <input id="studentNumber" type="text" placeholder="Öğrenci numarası" required>
+      <button type="submit">Öğrenci Ekle</button>
+    </form>
+
+    <p id="studentCount">Toplam öğrenci: 0</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Numara</th>
+          <th>Ad Soyad</th>
+          <th>İşlem</th>
+        </tr>
+      </thead>
+      <tbody id="studentList"></tbody>
+    </table>
+  </main>
+</body>
+</html>
