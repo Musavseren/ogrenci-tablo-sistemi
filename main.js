@@ -14,6 +14,16 @@ function saveStudents() {
 function renderStudents() {
   studentList.replaceChildren();
 
+  if (students.length === 0) {
+    const row = document.createElement("tr");
+    const cell = document.createElement("td");
+
+    cell.colSpan = 3;
+    cell.textContent = "Henüz öğrenci eklenmedi.";
+    row.appendChild(cell);
+    studentList.appendChild(row);
+  }
+
   students.forEach((student) => {
     const row = document.createElement("tr");
 
