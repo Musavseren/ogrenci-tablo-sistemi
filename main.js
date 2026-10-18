@@ -14,6 +14,16 @@ function saveStudents() {
 function renderStudents() {
   studentList.replaceChildren();
 
+  if (students.length === 0) {
+    const row = document.createElement("tr");
+    const cell = document.createElement("td");
+
+    cell.colSpan = 3;
+    cell.textContent = "Henüz öğrenci eklenmedi.";
+    row.appendChild(cell);
+    studentList.appendChild(row);
+  }
+
   students.forEach((student) => {
     const row = document.createElement("tr");
 
@@ -45,15 +55,22 @@ function renderStudents() {
 form.addEventListener("submit", (event) => {
   event.preventDefault();
 
-  const name = nameInput.value.trim();
+ const name = nameInput.value.trim().replace(/\s+/g, " ");
   const number = numberInput.value.trim();
 
   if (!name || !number) return;
 
   if (students.some((student) => student.number === number)) {
-    alert("Bu öğrenci numarası zaten kayıtlı.");
-    return;
-  }
+  alert("Bu öğrenci numarası zaten kayıtlı.");
+  numberInput.focus();
+  return;
+}
+
+if (!/^\d+$/.test(number)) {
+  alert("Öğrenci numarası yalnızca rakamlardan oluşmalıdır.");
+  numberInput.focus();
+  return;  
+}
 
   students.push({
     id: crypto.randomUUID(),
