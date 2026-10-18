@@ -97,3 +97,8 @@ tbody tr:hover {
 td {
   transition: background-color 0.2s ease;
 }
+th {
+  font-weight: 700;
+  color: #1e3a8a;
+  padding: 14px 12px;
+}
