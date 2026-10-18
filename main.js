@@ -32,7 +32,15 @@ const filteredStudents = students.filter((student) => {
     student.number.includes(searchTerm)
   );
 });
+if (filteredStudents.length === 0 && searchTerm !== "") {
+  const row = document.createElement("tr");
+  const cell = document.createElement("td");
 
+  cell.colSpan = 3;
+  cell.textContent = "Aramayla eşleşen öğrenci bulunamadı.";
+  row.appendChild(cell);
+  studentList.appendChild(row);
+}
 filteredStudents.forEach((student) => {
     const row = document.createElement("tr");
 
