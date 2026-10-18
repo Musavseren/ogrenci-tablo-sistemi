@@ -55,7 +55,7 @@ function renderStudents() {
 form.addEventListener("submit", (event) => {
   event.preventDefault();
 
-  const name = nameInput.value.trim();
+ const name = nameInput.value.trim().replace(/\s+/g, " ");
   const number = numberInput.value.trim();
 
   if (!name || !number) return;
