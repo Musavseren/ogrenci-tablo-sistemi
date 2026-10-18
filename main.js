@@ -24,7 +24,16 @@ function renderStudents() {
     studentList.appendChild(row);
   }
 
-  students.forEach((student) => {
+const searchTerm = studentSearch.value.trim().toLocaleLowerCase("tr-TR");
+
+const filteredStudents = students.filter((student) => {
+  return (
+    student.name.toLocaleLowerCase("tr-TR").includes(searchTerm) ||
+    student.number.includes(searchTerm)
+  );
+});
+
+filteredStudents.forEach((student) => {
     const row = document.createElement("tr");
 
     [student.number, student.name].forEach((value) => {
@@ -85,3 +94,4 @@ if (!/^\d+$/.test(number)) {
 });
 
 renderStudents();
+studentSearch.addEventListener("input", renderStudents);
