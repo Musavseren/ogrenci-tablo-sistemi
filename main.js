@@ -61,9 +61,16 @@ form.addEventListener("submit", (event) => {
   if (!name || !number) return;
 
   if (students.some((student) => student.number === number)) {
-    alert("Bu öğrenci numarası zaten kayıtlı.");
-    return;
-  }
+  alert("Bu öğrenci numarası zaten kayıtlı.");
+  numberInput.focus();
+  return;
+}
+
+if (!/^\d+$/.test(number)) {
+  alert("Öğrenci numarası yalnızca rakamlardan oluşmalıdır.");
+  numberInput.focus();
+  return;  
+}
 
   students.push({
     id: crypto.randomUUID(),
