@@ -4,7 +4,7 @@ const nameInput = document.getElementById("studentName");
 const numberInput = document.getElementById("studentNumber");
 const studentList = document.getElementById("studentList");
 const studentCount = document.getElementById("studentCount");
-
+const studentSearch = document.getElementById("studentSearch");
 let students = JSON.parse(localStorage.getItem("students") || "[]");
 
 function saveStudents() {
