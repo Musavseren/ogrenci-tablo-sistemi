@@ -105,7 +105,7 @@ if (!/^\d+$/.test(number)) {
 renderStudents();
 studentSearch.addEventListener("input", renderStudents);
 clearStudentsButton.addEventListener("click", () => {
-  if (students.length === 0) {
+ if (students.length === 0 && studentSearch.value.trim() === "") {
     alert("Silinecek öğrenci bulunmuyor.");
     return;
   }
