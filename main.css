@@ -102,3 +102,12 @@ th {
   color: #1e3a8a;
   padding: 14px 12px;
 }
+form label {
+  font-weight: 600;
+  color: #334155;
+}
+
+form input:focus {
+  outline: 2px solid #2563eb;
+  outline-offset: 1px;
+}
