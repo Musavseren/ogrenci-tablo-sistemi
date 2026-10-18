@@ -5,6 +5,7 @@ const numberInput = document.getElementById("studentNumber");
 const studentList = document.getElementById("studentList");
 const studentCount = document.getElementById("studentCount");
 const studentSearch = document.getElementById("studentSearch");
+const clearStudentsButton = document.getElementById("clearStudents");
 let students = JSON.parse(localStorage.getItem("students") || "[]");
 
 function saveStudents() {
@@ -103,3 +104,17 @@ if (!/^\d+$/.test(number)) {
 
 renderStudents();
 studentSearch.addEventListener("input", renderStudents);
+clearStudentsButton.addEventListener("click", () => {
+  if (students.length === 0) {
+    alert("Silinecek öğrenci bulunmuyor.");
+    return;
+  }
+
+  if (!confirm("Tüm öğrencileri silmek istediğinizden emin misiniz?")) {
+    return;
+  }
+
+  students = [];
+  saveStudents();
+  renderStudents();
+});
