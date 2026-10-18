@@ -72,3 +72,11 @@ th {
 .delete-btn {
   background: #dc2626;
 }
+#clearStudents {
+  background: #dc2626;
+  margin-bottom: 16px;
+}
+
+#clearStudents:hover {
+  background: #b91c1c;
+}
